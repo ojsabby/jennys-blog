@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celebrating Jennifer — 25</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0a0a0a;--deep:#111;
+  --purple:#6b21a8;--purple-light:#a855f7;
+  --gold:#c9a84c;--gold-light:#f0d080;
+  --cream:#fdfaf5;--text:#1a1a1a;--muted:#6b6b6b;--border:#e0d8cc;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* POPUP */
+#popup-overlay{position:fixed;inset:0;background:rgba(8,4,20,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);animation:overlayIn 0.4s ease both;}
+@keyframes overlayIn{from{opacity:0}to{opacity:1}}
+.popup-box{background:linear-gradient(160deg,#1a0a3a 0%,#0e0618 60%,#1a0a2e 100%);border:1px solid rgba(201,168,76,0.3);border-radius:20px;padding:3.5rem 3rem 2.5rem;max-width:520px;width:90%;text-align:center;position:relative;overflow:hidden;animation:popIn 0.7s cubic-bezier(.22,1,.36,1) 0.2s both;box-shadow:0 0 80px rgba(107,33,168,0.4),0 0 160px rgba(107,33,168,0.15);}
+@keyframes popIn{from{opacity:0;transform:scale(0.8) translateY(40px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.popup-box::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(168,85,247,0.25),transparent 70%);top:-80px;right:-80px;border-radius:50%;pointer-events:none;}
+.popup-confetti-strip{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--gold),var(--purple-light),var(--gold-light),var(--purple));background-size:200% 100%;animation:shimmer 2s linear infinite;}
+@keyframes shimmer{to{background-position:200% 0;}}
+.popup-tag{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:1.2rem;animation:fadeUp 0.6s ease 0.6s both;}
+.popup-number{font-family:'Playfair Display',serif;font-size:clamp(5rem,18vw,9rem);font-weight:900;line-height:0.9;background:linear-gradient(135deg,var(--gold-light),var(--gold),#b8860b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.3rem;animation:fadeUp 0.7s ease 0.7s both;filter:drop-shadow(0 0 30px rgba(201,168,76,0.4));}
+.popup-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,2.2rem);font-style:italic;color:#fff;margin-bottom:0.6rem;animation:fadeUp 0.7s ease 0.85s both;}
+.popup-name{font-family:'Playfair Display',serif;font-size:clamp(2rem,7vw,3.2rem);font-weight:700;background:linear-gradient(135deg,#fff 0%,var(--purple-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.5rem;animation:fadeUp 0.7s ease 1s both;}
+.popup-sub{font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.7;font-style:italic;margin-bottom:2rem;animation:fadeUp 0.7s ease 1.1s both;}
+.popup-btn{display:inline-block;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;color:#0a0a0a;background:linear-gradient(135deg,var(--gold-light),var(--gold));border:none;padding:0.85rem 3rem;border-radius:50px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;animation:fadeUp 0.7s ease 1.3s both;box-shadow:0 4px 24px rgba(201,168,76,0.35);}
+.popup-btn:hover{transform:scale(1.04);box-shadow:0 6px 32px rgba(201,168,76,0.5);}
+.popup-float{position:absolute;font-size:1.2rem;opacity:0;animation:floatUp 3s ease-in-out infinite;pointer-events:none;}
+@keyframes floatUp{0%{opacity:0;transform:translateY(0) scale(0.8);}20%{opacity:0.7;}80%{opacity:0.4;}100%{opacity:0;transform:translateY(-120px) scale(1.1);}}
+
+/* TICKER */
+.ticker-wrap{background:var(--purple);color:#fff;padding:0.5rem 0;overflow:hidden;position:relative;z-index:10;}
+.ticker-inner{display:inline-flex;white-space:nowrap;animation:ticker 22s linear infinite;}
+.ticker-inner span{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;padding:0 2.5rem;}
+.ticker-inner span::before{content:'✦';margin-right:2.5rem;color:var(--gold-light);opacity:0.8;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* MASTHEAD */
+.masthead{background:var(--black);padding:3.5rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;border-bottom:3px solid var(--gold);}
+.masthead::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(107,33,168,0.3),transparent);pointer-events:none;}
+.masthead-eyebrow{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;position:relative;z-index:1;}
+.masthead-logo{font-family:'Playfair Display',serif;font-size:clamp(3rem,10vw,7rem);font-weight:900;color:#fff;line-height:1;position:relative;z-index:1;text-shadow:0 0 60px rgba(168,85,247,0.5);}
+.masthead-logo em{color:var(--gold);font-style:normal;}
+.masthead-sub{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.75rem;position:relative;z-index:1;}
+.masthead-date{font-size:0.68rem;color:rgba(255,255,255,0.3);margin-top:0.4rem;position:relative;z-index:1;letter-spacing:0.1em;}
+
+/* NAV */
+.site-nav{background:var(--deep);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;gap:2.5rem;padding:0.75rem 2rem;position:sticky;top:0;z-index:50;}
+.site-nav a{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;font-weight:500;}
+.site-nav a:hover{color:var(--gold);}
+
+/* LAYOUT */
+.page-wrap{max-width:860px;margin:0 auto;padding:0 1.5rem;}
+
+/* SIDEBAR DECO */
+.deco-left{position:fixed;left:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:1rem 0.75rem;pointer-events:none;}
+.deco-left span{font-size:1.3rem;opacity:0.25;animation:sidePop 3s ease-in-out infinite;}
+.deco-left span:nth-child(2){animation-delay:0.6s;}
+.deco-left span:nth-child(3){animation-delay:1.2s;}
+.deco-left span:nth-child(4){animation-delay:1.8s;}
+.deco-left span:nth-child(5){animation-delay:2.4s;}
+@keyframes sidePop{0%,100%{opacity:0.15;transform:scale(1);}50%{opacity:0.45;transform:scale(1.2);}}
+.deco-right{position:fixed;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:1rem 0.75rem;pointer-events:none;}
+.deco-right span{font-size:1.3rem;opacity:0.2;animation:sidePop 3.5s ease-in-out infinite;}
+.deco-right span:nth-child(2){animation-delay:0.8s;}
+.deco-right span:nth-child(3){animation-delay:1.6s;}
+.deco-right span:nth-child(4){animation-delay:2.2s;}
+
+/* HERO */
+.hero-section{padding:4rem 0 2rem;border-bottom:2px solid var(--border);margin-bottom:2.5rem;}
+.hero-kicker{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--purple);font-weight:600;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;}
+.hero-kicker::before{content:'';width:24px;height:2px;background:var(--purple);display:inline-block;}
+.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+.hero-headline .gold-word{color:var(--gold);}
+.hero-dek{font-size:1.15rem;color:var(--muted);line-height:1.75;font-style:italic;max-width:620px;margin-bottom:1.5rem;font-family:'DM Serif Display',serif;}
+.byline{font-size:0.72rem;letter-spacing:0.08em;color:var(--muted);border-top:1px solid var(--border);padding-top:0.75rem;display:flex;align-items:center;gap:1rem;}
+.byline strong{color:var(--text);font-weight:600;}
+
+/* SECTION LABEL */
+.section-label{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--purple);font-weight:600;display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ARTICLE */
+.article-body{margin-bottom:3rem;}
+.article-body p{font-size:1.08rem;line-height:1.9;color:#2a2a2a;margin-bottom:1.4rem;}
+.article-body p:first-child::first-letter{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;float:left;line-height:0.75;margin:0.1em 0.1em 0 0;color:var(--purple);}
+.pull-quote{border-left:4px solid var(--gold);padding:1.2rem 1.5rem;margin:2.5rem 0;background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(107,33,168,0.04));border-radius:0 8px 8px 0;}
+.pull-quote p{font-family:'DM Serif Display',serif;font-size:1.35rem;font-style:italic;color:var(--text);line-height:1.6;margin:0;}
+
+/* DIVIDER */
+.fancy-divider{text-align:center;margin:2.5rem 0;display:flex;align-items:center;gap:1rem;color:var(--gold);font-size:0.9rem;letter-spacing:0.3em;}
+.fancy-divider::before,.fancy-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);}
+
+/* EXCLUSIVE SECTION */
+.exclusive-section{margin:3rem 0;background:linear-gradient(160deg,#1a0a3a 0%,#0e0618 60%,#1a0a2e 100%);border:1px solid rgba(201,168,76,0.3);border-radius:20px;padding:3.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(107,33,168,0.25);}
+.exclusive-section::before{content:'';position:absolute;width:350px;height:350px;background:radial-gradient(circle,rgba(168,85,247,0.2),transparent 70%);top:-80px;right:-80px;border-radius:50%;pointer-events:none;}
+.exclusive-shimmer{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--gold),var(--purple-light),var(--gold-light),var(--purple));background-size:200% 100%;animation:shimmer 2s linear infinite;border-radius:20px 20px 0 0;}
+.exclusive-eyebrow{font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);opacity:0.75;margin-bottom:1rem;position:relative;z-index:1;}
+.exclusive-headline{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2.2rem);font-style:italic;color:#fff;line-height:1.3;margin-bottom:0.75rem;position:relative;z-index:1;}
+.exclusive-sub{font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:2.2rem;font-style:italic;position:relative;z-index:1;}
+.exclusive-btn{display:inline-block;font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:1rem 3rem;border-radius:50px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 28px rgba(201,168,76,0.4);position:relative;z-index:1;}
+.exclusive-btn:hover{transform:scale(1.05);box-shadow:0 8px 40px rgba(201,168,76,0.6);}
+
+/* MYSTERY BOX */
+.mystery-section{margin:3rem 0 4rem;text-align:center;}
+.mystery-section .section-label{justify-content:center;}
+.mystery-section .section-label::after,.mystery-section .section-label::before{content:'';flex:1;height:1px;background:var(--border);}
+.mystery-section .section-label::before{display:block;}
+.mystery-box{display:inline-block;margin:1.5rem auto;position:relative;cursor:pointer;}
+.mystery-lid{background:linear-gradient(135deg,#1a0a3a,#2d1a6e);border:2px solid var(--gold);border-radius:16px;padding:3rem 4rem;text-align:center;transition:transform 0.4s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;min-width:280px;}
+.mystery-lid::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(168,85,247,0.2),transparent 65%);}
+.mystery-lid:hover{transform:scale(1.03);}
+.mystery-box-icon{font-size:3.5rem;display:block;margin-bottom:0.75rem;animation:wiggle 2s ease-in-out infinite;}
+@keyframes wiggle{0%,100%{transform:rotate(0deg);}25%{transform:rotate(-5deg);}75%{transform:rotate(5deg);}}
+.mystery-label{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;color:#fff;display:block;margin-bottom:0.4rem;position:relative;z-index:1;}
+.mystery-hint{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;position:relative;z-index:1;}
+.mystery-pulse{position:absolute;inset:-2px;border-radius:18px;border:2px solid var(--gold);opacity:0;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%{transform:scale(1);opacity:0.5;}100%{transform:scale(1.08);opacity:0;}}
+
+/* TICKET */
+.mystery-reveal{display:none;margin-top:1.5rem;background:linear-gradient(135deg,#1a0a3a,#0e0618);border:1px solid rgba(201,168,76,0.35);border-radius:16px;padding:2.5rem 2rem;text-align:left;position:relative;overflow:hidden;animation:revealIn 0.6s cubic-bezier(.22,1,.36,1) both;}
+@keyframes revealIn{from{opacity:0;transform:scale(0.9) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.mystery-reveal::before{content:'🎊';position:absolute;font-size:8rem;opacity:0.04;right:-1rem;top:-1rem;pointer-events:none;}
+.ticket-header{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:0.3rem;}
+.ticket-sub{font-size:0.8rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2rem;}
+.ticket-divider{border:none;border-top:1px dashed rgba(201,168,76,0.3);margin:1.5rem 0;}
+.ticket-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem;flex-wrap:wrap;gap:0.5rem;}
+.ticket-field{flex:1;min-width:120px;}
+.ticket-field label{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:0.3rem;}
+.ticket-field span{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;font-style:italic;}
+.ticket-note{font-size:0.82rem;color:rgba(255,255,255,0.4);font-style:italic;line-height:1.6;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem;}
+
+/* FOOTER */
+.site-footer{background:var(--black);border-top:3px solid var(--gold);padding:3rem 2rem;text-align:center;}
+.footer-name{font-family:'Playfair Display',serif;font-size:2.5rem;font-style:italic;color:var(--gold);margin-bottom:0.5rem;}
+.footer-sub{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.confetti-piece{position:fixed;pointer-events:none;z-index:10000;border-radius:2px;animation:confettiFall linear forwards;}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:600px){
+  .deco-left,.deco-right{display:none;}
+  .pull-quote p{font-size:1.1rem;}
+  .mystery-lid{padding:2rem 2rem;}
+  .exclusive-btn{padding:0.9rem 2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- POPUP -->
+<div id="popup-overlay" style="opacity: 0; transition: opacity 0.5s; display: none;">
+  <div class="popup-box">
+    <div class="popup-confetti-strip"></div>
+    <div class="popup-float" style="left:8%;top:25%;animation-delay:0s;">🎉</div>
+    <div class="popup-float" style="left:80%;top:30%;animation-delay:0.7s;">✨</div>
+    <div class="popup-float" style="left:20%;top:65%;animation-delay:1.4s;">💜</div>
+    <div class="popup-float" style="left:70%;top:60%;animation-delay:2s;">🌟</div>
+    <div class="popup-float" style="left:45%;top:20%;animation-delay:1s;">🎊</div>
+    <p class="popup-tag">A Special Announcement</p>
+    <div class="popup-number">25</div>
+    <h1 class="popup-title">Happy Birthday,</h1>
+    <p class="popup-name">Jennifer</p>
+    <p class="popup-sub">Today the world stops to celebrate you.<br>We made this just for you — with all the love. 💜</p>
+    <button class="popup-btn" onclick="closePopup()">Let's Celebrate →</button>
+  </div>
+</div>
+
+<!-- SIDEBAR DECO -->
+<div class="deco-left" aria-hidden="true"><span>🎂</span><span>✨</span><span>💜</span><span>🌟</span><span>🎊</span></div>
+<div class="deco-right" aria-hidden="true"><span>🥂</span><span>💫</span><span>🎁</span><span>🌸</span></div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>Happy 25th Birthday Jennifer</span><span>Celebrating You Today &amp; Always</span>
+    <span>25 Years of Greatness</span><span>She's That Girl</span>
+    <span>Happy 25th Birthday Jennifer</span><span>Celebrating You Today &amp; Always</span>
+    <span>25 Years of Greatness</span><span>She's That Girl</span>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <p class="masthead-eyebrow">✦ Exclusive Edition ✦</p>
+  <h1 class="masthead-logo"><em>Jennifer</em></h1>
+  <p class="masthead-sub">A Celebration of an Extraordinary Woman</p>
+  <p class="masthead-date">Vol. 25 · Special Birthday Edition · 2026</p>
+</header>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="#story">Her Story</a>
+  <a href="#exclusive">Exclusive</a>
+  <a href="#surprise">Your Surprise</a>
+</nav>
+
+<main class="page-wrap">
+
+  <!-- ── SECTION 1: HER STORY ── -->
+  <section class="hero-section reveal visible" id="story">
+    <p class="hero-kicker">Breaking · Celebrating</p>
+    <h2 class="hero-headline">Celebrating You:<br><span class="gold-word">25 Years</span> of Pure Magic</h2>
+    <p class="hero-dek">Sources close to everyone who knows her confirm: Jennifer has been undeniably that girl since day one.</p>
+    <div class="byline">
+      <strong>By Your Biggest Fans</strong>
+      <span>·</span><span>Published on Your Birthday</span>
+      <span>·</span><span>♾️ min read</span>
+    </div>
+  </section>
+
+  <div class="article-body reveal visible">
+    <div class="section-label">Her Story</div>
+    <p>To our half that makes us whole — our sister, you will always have a piece of us that will remain even after we've left this earth. Happy 25th birthday, a quarter century that we know will be a memorable one. A God did one!!</p>
+    <p>Your friendship grounds us, humbles us, and is part of the reason why we are who we are. Thank you isn't even enough. And where words fail me, we hope our actions in our sisterhood speaks for us.</p>
+    <div class="pull-quote">
+      <p>"She is more precious than rubies; nothing you desire can compare with her." — Proverbs 3:15</p>
+    </div>
+    <p>25 will bring what 24 couldn't. And we pray 25 will be a constant reminder of why you serve the Lord the way you do. We pray God continues to be your Jehovah Rapha and Jehovah Jireh, and that this year your light shines wherever you go. You're so loved and so favored. We love YOU so deep and so wide — past this lifetime. Happy birthday hunni bun! Enjoy all that life has to offer. ♡</p>
+  </div>
+
+  <div class="fancy-divider reveal visible">✦ ✦ ✦</div>
+
+  <!-- ── SECTION 2: CLICK HERE FOR EXCLUSIVE FEATURES ── -->
+  <div class="exclusive-section reveal visible" id="exclusive">
+    <div class="exclusive-shimmer"></div>
+    <p class="exclusive-eyebrow">✦ Just for You ✦</p>
+    <p class="exclusive-headline">Click Here for Exclusive Features</p>
+    <p class="exclusive-sub">We put together something extra special — tap below to see it all. 💜</p>
+    <a class="exclusive-btn" href="https://canva.link/0xw5dbe8y20n78u" target="_blank">Open Exclusive Access →</a>
+  </div>
+
+  <div class="fancy-divider reveal visible">✦ ✦ ✦</div>
+
+  <!-- ── SECTION 3: MYSTERY GIFT / TICKET ── -->
+  <div class="mystery-section reveal visible" id="surprise">
+    <div class="section-label">Psst... One More Thing</div>
+    <p style="font-size:0.95rem;color:var(--muted);font-style:italic;margin-bottom:0.5rem;">We've been holding onto something for you. Go ahead — open it. 👀</p>
+
+    <div class="mystery-box" onclick="revealMystery()">
+      <div class="mystery-lid">
+        <div class="mystery-pulse"></div>
+        <span class="mystery-box-icon">🎁</span>
+        <span class="mystery-label">Your Mystery Gift</span>
+        <span class="mystery-hint">Tap to reveal · If you dare</span>
+      </div>
+    </div>
+
+    <div class="mystery-reveal" id="mysteryReveal">
+      <div class="ticket-header">✈️ You're Going to Italy</div>
+      <p class="ticket-sub">Official Flight Confirmation · Booking Ref: YTXRWH</p>
+      <hr class="ticket-divider">
+      <div class="ticket-row">
+        <div class="ticket-field"><label>Passenger</label><span>Ms. Jennifer Adomako</span></div>
+        <div class="ticket-field"><label>Ticket Number</label><span>117 - 2544194792</span></div>
+      </div>
+      <hr class="ticket-divider">
+      <div class="ticket-row">
+        <div class="ticket-field"><label>✈ Flight 1 — Departs</label><span>Chicago ORD → Copenhagen</span></div>
+        <div class="ticket-field"><label>Date &amp; Time</label><span>Aug 29 · 7:15 PM</span></div>
+      </div>
+      <div class="ticket-row">
+        <div class="ticket-field"><label>✈ Flight 2 — Connecting</label><span>Copenhagen → Venice, Italy 🇮🇹</span></div>
+        <div class="ticket-field"><label>Date &amp; Time</label><span>Aug 30 · 5:00 PM</span></div>
+      </div>
+      <hr class="ticket-divider">
+      <div class="ticket-row">
+        <div class="ticket-field"><label>↩ Return Flight 1</label><span>Venice → Copenhagen</span></div>
+        <div class="ticket-field"><label>Date &amp; Time</label><span>Sep 5 · 11:00 AM</span></div>
+      </div>
+      <div class="ticket-row">
+        <div class="ticket-field"><label>↩ Return Flight 2</label><span>Copenhagen → Chicago ORD</span></div>
+        <div class="ticket-field"><label>Date &amp; Time</label><span>Sep 5 · 1:55 PM</span></div>
+      </div>
+      <hr class="ticket-divider">
+      <div class="ticket-row">
+        <div class="ticket-field"><label>Airline</label><span>Scandinavian Airlines (SAS)</span></div>
+        <div class="ticket-field"><label>Destination</label><span>Venice Marco Polo, Italy 🇮🇹</span></div>
+      </div>
+      <p class="ticket-note">Venice, Italy — because you deserve to see the world and we wanted to be the ones to take you there. 25 is your year, and it starts with this. We love you past this lifetime. Enjoy every single second. 💜✈️</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="footer-name">Happy 25th, Jennifer</p>
+  <p class="footer-sub">Made with love · All rights reserved to being that girl · Always</p>
+</footer>
+
+<script>
+function closePopup(){
+  const o=document.getElementById('popup-overlay');
+  o.style.opacity='0';o.style.transition='opacity 0.5s';
+  setTimeout(()=>o.style.display='none',500);
+  launchConfetti();
+}
+function launchConfetti(){
+  const colors=['#c9a84c','#f0d080','#6b21a8','#a855f7','#fff0b3','#e9d5ff','#ffffff'];
+  for(let i=0;i<100;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div');
+      c.className='confetti-piece';
+      c.style.cssText=`left:${Math.random()*100}vw;top:-10px;width:${5+Math.random()*8}px;height:${5+Math.random()*8}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'2px'};animation-duration:${1.6+Math.random()*2.5}s;animation-delay:${Math.random()*0.3}s;transform:rotate(${Math.random()*360}deg);`;
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),5000);
+    },i*18);
+  }
+}
+function revealMystery(){
+  document.querySelector('.mystery-box').style.display='none';
+  const r=document.getElementById('mysteryReveal');
+  r.style.display='block';
+  launchConfetti();
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+
+</body></html>
